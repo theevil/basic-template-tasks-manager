@@ -1,13 +1,13 @@
-// Tipos generales de la aplicación
-export interface ApiResponse<T> {
-  success: boolean;
-  data?: T;
-  error?: string;
-}
+// Re-export all types from their respective modules
 
-export interface PaginatedResponse<T> {
-  items: T[];
-  total: number;
-  page: number;
-  limit: number;
-}
+// API Types
+export type { ApiResponse, PaginatedResponse } from './api';
+
+// Priority Type
+export type { Priority } from './priority';
+
+// Project Types
+export type { ProjectBase, ProjectCreate, ProjectUpdate, Project } from './project';
+
+// Task Types
+export type { TaskBase, TaskCreate, TaskUpdate, Task } from './task';

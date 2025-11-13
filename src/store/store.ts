@@ -3,12 +3,14 @@ import type { TypedUseSelectorHook } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Importar slices aquí
-// import exampleReducer from './slices/exampleSlice';
+import projectReducer from './slices/projectSlice';
+import taskReducer from './slices/taskSlice';
 
 export const store = configureStore({
   reducer: {
     // Agregar slices aquí
-    // example: exampleReducer,
+    projects: projectReducer,
+    tasks: taskReducer,
   },
 });
 

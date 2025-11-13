@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 class ApiClient {
   private client: AxiosInstance;
@@ -13,15 +13,26 @@ class ApiClient {
       headers: {
         'Content-Type': 'application/json',
       },
+      withCredentials: false,
     });
 
-    // Interceptor de respuesta
+    // Response interceptor
     this.client.interceptors.response.use(
       (response) => response,
       (error) => {
-        if (error.response?.status === 401) {
-          // Manejar errores de autenticación
+        // Handle different error types
+        if (error.code === 'ECONNABORTED') {
+          console.error('Request timeout - Backend server may not be running');
+        } else if (error.message === 'Network Error' || error.code === 'ERR_NETWORK') {
+          console.error('Network error - Unable to connect to backend');
+        } else if (error.response?.status === 401) {
           console.error('Unauthorized access');
+        } else if (error.response?.status === 403) {
+          console.error('Access forbidden');
+        } else if (error.response?.status === 404) {
+          console.error('Resource not found');
+        } else if (error.response?.status === 500) {
+          console.error('Server error');
         }
         return Promise.reject(error);
       }

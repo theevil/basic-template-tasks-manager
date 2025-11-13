@@ -1,0 +1,11 @@
+.add-task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.add-task-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

@@ -1,0 +1,18 @@
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 16px;
+  transition: box-shadow 0.2s ease;
+
+  &--low {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  &--medium {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  &--high {
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+  }
+}
