@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import { Button, TextInput } from '../../atoms';
+import PrioritySelector from '../../atoms/PrioritySelector/PrioritySelector';
+import type { Priority } from '../../atoms/PrioritySelector/PrioritySelector';
 import './AddTaskForm.scss';
 
 export interface AddTaskFormProps {
-  onAddTask: (title: string, description?: string) => void;
+  onAddTask: (title: string, description?: string, priority?: Priority) => void;
   isLoading?: boolean;
+  defaultPriority?: Priority;
 }
 
-const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, isLoading = false }) => {
+const AddTaskForm: React.FC<AddTaskFormProps> = ({
+  onAddTask,
+  isLoading = false,
+  defaultPriority = 'Normal'
+}) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [priority, setPriority] = useState<Priority>(defaultPriority);
   const [error, setError] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,9 +29,10 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, isLoading = false 
       return;
     }
 
-    onAddTask(title.trim(), description.trim() || undefined);
+    onAddTask(title.trim(), description.trim() || undefined, priority);
     setTitle('');
     setDescription('');
+    setPriority(defaultPriority);
   };
 
   return (
@@ -42,6 +51,11 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, isLoading = false 
           placeholder="Enter task description..."
           value={description}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDescription(e.target.value)}
+          disabled={isLoading}
+        />
+        <PrioritySelector
+          value={priority}
+          onChange={setPriority}
           disabled={isLoading}
         />
       </div>

@@ -1,0 +1,246 @@
+.project-list {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 1rem;
+
+    h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #333;
+    }
+  }
+
+  &__add-btn {
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: #45a049;
+    }
+
+    &:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  }
+
+  &__error {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+  }
+
+  &__loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-style: italic;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 2rem;
+    color: #999;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__form {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e0e0e0;
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.95rem;
+
+      &:focus {
+        outline: none;
+        border-color: #4CAF50;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+      }
+
+      &:disabled {
+        background-color: #f0f0f0;
+        cursor: not-allowed;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+    }
+  }
+
+  &__form-buttons {
+    display: flex;
+    gap: 0.75rem;
+
+    button {
+      flex: 1;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &[type='submit'] {
+        background-color: #4CAF50;
+        color: white;
+
+        &:hover:not(:disabled) {
+          background-color: #45a049;
+        }
+
+        &:disabled {
+          background-color: #cccccc;
+        }
+      }
+
+      &[type='button'] {
+        background-color: #f0f0f0;
+        color: #333;
+
+        &:hover:not(:disabled) {
+          background-color: #e0e0e0;
+        }
+
+        &:disabled {
+          background-color: #f0f0f0;
+          color: #999;
+        }
+      }
+    }
+  }
+
+  &__items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    background-color: #fafafa;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      border-color: #4CAF50;
+      background-color: #f0f8f0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    &--selected {
+      border-color: #4CAF50;
+      background-color: #f0f8f0;
+      box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+
+      .project-list__item-header h3 {
+        color: #4CAF50;
+      }
+    }
+  }
+
+  &__item-content {
+    flex: 1;
+    padding-right: 1rem;
+  }
+
+  &__item-header {
+    margin-bottom: 0.5rem;
+
+    h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #333;
+      transition: color 0.2s ease;
+    }
+  }
+
+  &__item-description {
+    margin: 0.25rem 0;
+    color: #666;
+    font-size: 0.9rem;
+    word-break: break-word;
+  }
+
+  &__item-date {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #999;
+  }
+
+  &__item-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__item-btn {
+    padding: 0.5rem;
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: #f0f0f0;
+      border-color: #999;
+      transform: scale(1.1);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &--edit {
+      &:hover:not(:disabled) {
+        border-color: #2196F3;
+      }
+    }
+
+    &--delete {
+      &:hover:not(:disabled) {
+        border-color: #ff6b6b;
+      }
+    }
+  }
+}

@@ -18,6 +18,82 @@
   padding: 24px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  &--projects {
+    grid-column: 1;
+  }
+
+  &--tasks {
+    grid-column: 2;
+  }
+}
+
+.dashboard__tasks-header {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 1rem;
+
+  h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+}
+
+.dashboard__project-description {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.dashboard__no-project {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.dashboard__no-project-content {
+  padding: 2rem;
+
+  h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+
+  p {
+    margin: 0 0 1.5rem 0;
+    color: #666;
+    font-size: 1rem;
+  }
+}
+
+.dashboard__no-project-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: inline-block;
+
+  li {
+    padding: 0.5rem 0;
+    color: #666;
+    font-size: 0.95rem;
+
+    &:before {
+      content: '✓ ';
+      color: #4CAF50;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+  }
 }
 
 .dashboard__error {
@@ -34,6 +110,12 @@
   .dashboard__grid {
     grid-template-columns: 1fr;
   }
+
+  .dashboard__section {
+    &--tasks {
+      grid-column: 1;
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -43,5 +125,29 @@
 
   .dashboard__grid {
     gap: 16px;
+  }
+
+  .dashboard__tasks-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .dashboard__no-project {
+    min-height: 300px;
+  }
+
+  .dashboard__no-project-content {
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.25rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .dashboard__no-project-steps li {
+    font-size: 0.85rem;
   }
 }

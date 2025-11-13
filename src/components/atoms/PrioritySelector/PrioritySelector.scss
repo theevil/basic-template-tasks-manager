@@ -1,0 +1,97 @@
+// Priority Selector Styles
+.priority-selector {
+  width: 100%;
+  margin-bottom: 1.25rem;
+
+  &__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #666666; // text-secondary
+  }
+
+  &__select-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  &__select {
+    width: 100%;
+    padding: 0.6rem 2.5rem 0.6rem 0.9rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #333333; // text-primary
+    background-color: #ffffff; // bg-primary
+    border: 1px solid #d1d5db; // border-color
+    border-radius: 8px;
+    appearance: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    height: 44px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      border-color: #9ca3af; // border-hover-color
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: #4f46e5; // primary-color
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1); // primary-rgb with 0.1 opacity
+    }
+
+    &:disabled {
+      background-color: #f3f4f6; // bg-secondary
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    right: 0.75rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #666666; // text-secondary
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  // Priority indicator colors for the select dropdown
+  &__option {
+    padding: 0.5rem 0.75rem;
+    font-weight: 500;
+    
+    &--top {
+      color: #ff4d4f;
+      background-color: rgba(255, 77, 79, 0.1);
+    }
+    &--high {
+      color: #ff7a45;
+      background-color: rgba(255, 122, 69, 0.1);
+    }
+    &--medium {
+      color: #faad14;
+      background-color: rgba(250, 173, 20, 0.1);
+    }
+    &--low {
+      color: #52c41a;
+      background-color: rgba(82, 196, 26, 0.1);
+    }
+    &--normal {
+      color: var(--text-primary);
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+    
+    &[value=""] {
+      color: var(--text-secondary);
+      font-style: italic;
+      opacity: 0.8;
+    }
+  }
+}

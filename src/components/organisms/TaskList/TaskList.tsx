@@ -3,11 +3,14 @@ import { Card } from '../../atoms';
 import { TaskItem } from '../../molecules';
 import './TaskList.scss';
 
+import type { Priority } from '../../atoms/PrioritySelector/PrioritySelector';
+
 export interface Task {
   id: string;
   title: string;
   description?: string;
   isCompleted: boolean;
+  priority?: Priority;
 }
 
 export interface TaskListProps {
@@ -49,6 +52,7 @@ const TaskList: React.FC<TaskListProps> = ({
               id={task.id}
               title={task.title}
               description={task.description}
+              priority={task.priority}
               isCompleted={task.isCompleted}
               onToggle={onToggleTask}
               onDelete={onDeleteTask}

@@ -1,15 +1,10 @@
 import './TaskList.scss';
-
-interface Task {
-  id: number;
-  text: string;
-  done: boolean;
-}
+import type { Task } from '../types';
 
 interface TaskListProps {
   tasks: Task[];
   onChangeTask: (task: Task) => void;
-  onDeleteTask: (taskId: number) => void;
+  onDeleteTask: (taskId: string) => void;
 }
 
 export default function TaskList({
@@ -24,16 +19,16 @@ export default function TaskList({
           <label>
             <input
               type="checkbox"
-              checked={task.done}
+              checked={task.is_completed}
               onChange={(e) => {
                 onChangeTask({
                   ...task,
-                  done: e.target.checked,
+                  is_completed: e.target.checked,
                 });
               }}
             />
-            <span className={task.done ? 'task-done' : ''}>
-              {task.text}
+            <span className={task.is_completed ? 'task-done' : ''}>
+              {task.title}
             </span>
           </label>
           <button onClick={() => onDeleteTask(task.id)}>Delete</button>
