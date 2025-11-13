@@ -1,11 +1,144 @@
-# React + TypeScript + Vite
+# Task Manager Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern task management application built with React, TypeScript, Vite, FastAPI, and PostgreSQL. This application helps users manage their tasks with different priority levels and statuses.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Create, read, update, and delete tasks
+- Set task priorities (Normal, Low, Medium, High, Top)
+- Mark tasks as complete/incomplete
+- Responsive design for all devices
+- Modern UI with smooth animations
+
+## Project Structure
+
+```
+.
+├── backend/                 # FastAPI backend application
+│   ├── src/                # Source code
+│   │   ├── main.py         # FastAPI application entry point
+│   │   └── ...             # Other backend files
+│   └── Dockerfile          # Backend Dockerfile
+│
+├── src/                    # Frontend React application
+│   ├── components/         # Reusable UI components
+│   ├── pages/              # Page components
+│   ├── App.tsx             # Main application component
+│   └── ...                 # Other frontend files
+│
+├── docker-compose.yml      # Docker Compose configuration
+├── Dockerfile.frontend     # Frontend Dockerfile
+├── nginx.conf             # Nginx configuration
+└── README.md              # Project documentation
+```
+
+## Prerequisites
+
+- Docker and Docker Compose
+- Node.js 18+ (for local development)
+- Python 3.9+ (for local backend development)
+
+## Getting Started
+
+### Development with Docker (Recommended)
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/task-manager.git
+   cd task-manager
+   ```
+
+2. Start the application:
+   ```bash
+   docker-compose up --build
+   ```
+
+3. Access the application:
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:8000
+   - API Documentation: http://localhost:8000/docs
+
+### Local Development
+
+#### Backend Setup
+
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Set up environment variables:
+   ```bash
+   export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/taskdb
+   ```
+
+5. Run the backend server:
+   ```bash
+   uvicorn src.main:app --reload
+   ```
+
+#### Frontend Setup
+
+1. Navigate to the project root:
+   ```bash
+   cd ..
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Access the application at http://localhost:3000
+
+## Environment Variables
+
+### Backend
+
+- `DATABASE_URL`: PostgreSQL connection string
+- `SECRET_KEY`: Secret key for JWT token generation
+- `ALGORITHM`: Algorithm for JWT token
+- `ACCESS_TOKEN_EXPIRE_MINUTES`: Token expiration time in minutes
+
+### Frontend
+
+- `VITE_API_URL`: URL of the backend API
+
+## Available Scripts
+
+- `npm run dev`: Start development server
+- `npm run build`: Build for production
+- `npm run preview`: Preview production build
+- `npm run lint`: Run ESLint
+- `npm run test`: Run tests
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## React Compiler
 
