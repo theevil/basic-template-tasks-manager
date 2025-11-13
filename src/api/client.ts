@@ -1,7 +1,9 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+// In development, requests to /api will be proxied to the backend server
+// In production, this should be set to your production API URL
+const API_BASE_URL = import.meta.env.DEV ? '/api' : import.meta.env.VITE_API_URL;
 
 class ApiClient {
   private client: AxiosInstance;

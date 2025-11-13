@@ -12,13 +12,17 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app
+      - /app/__pycache__
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/taskdb
+      - PYTHONUNBUFFERED=1
     depends_on:
       postgres:
         condition: service_healthy
+    networks:
+      - taskmanager-network
 
-  # Frontend Service
+  # Frontend Development Server
   frontend:
     build:
       context: .
@@ -30,9 +34,15 @@ services:
       - .:/app
       - /app/node_modules
     environment:
-      - VITE_API_URL=http://localhost:8000
+      - NODE_ENV=development
+      - VITE_API_URL=http://backend:8000
+      - PNPM_FLAGS=--shamefully-hoist
     depends_on:
       - backend
+    stdin_open: true
+    tty: true
+    networks:
+      - taskmanager-network
 
   # Database Service
   postgres:
@@ -51,6 +61,15 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - taskmanager-network
+
+networks:
+  taskmanager-network:
+    driver: bridge
+    name: taskmanager-network
+    attachable: true
 
 volumes:
   postgres_data:
+    name: taskmanager-postgres-data

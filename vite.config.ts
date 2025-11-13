@@ -19,17 +19,43 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "@/styles/_variables" as vars;`,
+        additionalData: `
+          @use "sass:math";
+          @use "sass:color";
+          @use "@/styles/variables" as *;
+          @use "@/styles/globals/base" as *;
+        `,
       },
     },
   },
   server: {
+    port: 3000,
+    strictPort: true,
+    host: '0.0.0.0',
+    cors: true,
+    hmr: {
+      host: 'localhost',
+      port: 3000,
+      protocol: 'ws',
+    },
+    watch: {
+      usePolling: true,
+    },
     proxy: {
+      // Proxy API requests to the backend
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'http://backend:8000',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false,
+        rewrite: (path: string) => path.replace(/^\/api/, '')
       },
+      // Proxy WebSocket for HMR
+      '/ws': {
+        target: 'ws://localhost:8000',
+        ws: true,
+        changeOrigin: true,
+        secure: false
+      }
     },
   },
 })
