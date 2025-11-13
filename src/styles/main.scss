@@ -1,0 +1,17 @@
+// Main SCSS entry point
+// Imports all styles in the correct order
+
+// 1. Variables and configuration (auto-injected by Vite)
+// @use 'variables' as vars;
+
+// 2. Global styles
+@use 'globals/base';
+
+// 3. Component styles
+@use 'components/app';
+
+// 4. Utilities (add as needed)
+// @use 'utilities/helpers';
+
+// 5. Mixins (add as needed)
+// @use 'mixins/functions';

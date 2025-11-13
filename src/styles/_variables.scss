@@ -1,0 +1,6 @@
+// Variables file converted to Sass module style
+$font-stack: Helvetica, sans-serif !default;
+$primary-color: #333 !default;
+
+// Prefer keeping styles out of variables partial. Consumers should @use this file
+// and apply variables in their own styles. This avoids side-effects when using @use.
